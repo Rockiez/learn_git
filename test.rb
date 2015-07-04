@@ -1,6 +1,12 @@
-prc = Proc.new{|a, b| a + b}
-p prc.call(1, 2)
-p prc[3, 4]
-p prc.yield(5,6)
-p prc.(7, 8)
-p prc === [9, 10]
+fizz = proc{|n| n % 3 == 0}
+buzz = proc{|n| n % 5 == 0}
+fizzbuzz = proc{|n| n % 3 == 0 && n % 5 == 0}
+
+(1..100).each do |i|
+	case i
+		when fizzbuzz then puts "fizzbuzz"
+		when fizz then puts "fizz"
+		when buzz then puts "buzz"
+		else puts i
+	end
+end
