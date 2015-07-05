@@ -1,12 +1,17 @@
-fizz = proc{|n| n % 3 == 0}
-buzz = proc{|n| n % 5 == 0}
-fizzbuzz = proc{|n| n % 3 == 0 && n % 5 == 0}
-
-(1..100).each do |i|
-	case i
-		when fizzbuzz then puts "fizzbuzz"
-		when fizz then puts "fizz"
-		when buzz then puts "buzz"
-		else puts i
+def my_collect(obj, &block)
+	if block
+		a = []
+		obj.each do |num|
+			a << block.call(num)
+		end
+		a
+	else
+		obj
 	end
 end
+
+ary = my_collect([1, 2, 3, 4, 5]) do |i|
+	i * 2
+end
+
+p ary
